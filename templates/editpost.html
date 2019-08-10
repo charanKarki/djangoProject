@@ -1,0 +1,40 @@
+
+
+<!-- Modal -->
+<div class="modal fade " id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light"> Create a post <i class="fa fa-edit    "></i></h5>
+                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                       
+                    <form action="/edit/" class="form-group px-2 text-center" method="POST" id='edit-post' enctype="multipart/form-data"style='max-width:100%'>
+                        
+                        {% csrf_token %}
+                        
+                        <input type="text" name='post_title' class="form-control" placeholder="Post title" id='post_title'>
+                        
+                        <textarea type="text"name='post' class="form-control" col='30' row='20' id='post'>
+                            </textarea>
+
+                    <div class='custom-file text-left'>
+                        
+                        <input type="file" class="custom-file-control" name="post_img" id='post_img'>
+                        <label class="custom-file-label " for="post_img" aria-describedby="inputGroupFileAddon">Change file</label>
+                    </div>
+                    <!-- <small id="fileHelpId" class="form-text text-muted">Enter file path</small> -->
+                
+                    <input type="number" name='post_id' class="d-none" id='post_id' >
+        
+                     <button type="button" class="btn btn-light cancle" data-dismiss="modal" >Cancle</button>
+                     <input type="submit" value="Edit" class="btn btn-dark my-3">
+                    </form>
+            </div>
+            
+        </div>
+    </div>
+</div>

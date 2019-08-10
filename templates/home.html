@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+ 
+ <div class="jumbotron">
+     <h1 class="display-3">Home Page</h1>
+     <p class="lead">This is home page</p>
+     <hr class="my-2">
+     <p>Popular post</p>   
+     {% if request.user.is_anonymous %}
+        <p class="lead">
+         <a class="btn btn-primary btn-md" href="{% url 'signup' %}" role="button">Sign up</a>
+        </p>   
+     {% endif %}
+     
+     
+ </div>
+ <div class="recentblog mt-5">
+      <h1 class="font-weight-normal text-center bg-light">Popular blog posts <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+   <div class="row text-center justify-content-center" id="blog-posts">
+        {% include 'showPosts.html' %}
+     
+ </div>
+ </div>
+ 
+{% endblock content %}

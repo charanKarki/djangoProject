@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+   
+
+    
+    <form action="/signup/" method="post" class="form-group  pa-5 mx-auto text-center" id='signup'>
+<h1 class='font-weight-normal'> Create your Account</h1>
+        {% csrf_token %}
+        {{form}}
+        {% comment %} {{form.first_name}}
+        {{form.last_name}}
+        {{form.username}}
+        {{form.email}}
+        {{form.password1}} 
+         {{form.password2}} {% endcomment %}
+
+        {% comment %} <input type="text" name="first_name" class="form-control" placeholder="Enter first name">
+        <input type="text" name="last_name" class="form-control" placeholder="Enter last name">
+        <input type="text" name="username" class="form-control" placeholder="Enter username">
+        <input type="password" name="password1" class="form-control" placeholder="create password">
+        
+        <input type="password" name="password2" class="form-control" placeholder="conform password"> {% endcomment %}
+        <input type="submit" value="Create Account" class="btn btn-dark text-light">
+
+    </form>
+    <style>
+    .form-control{
+        margin:2rem 0;
+    }
+    </style>
+{% endblock content %}

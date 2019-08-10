@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <div class="container text-center">
+        <h4 class="font-weight-normal text-center bg-light py-3" id='create-post-heading'style='cursor:pointer;' >
+                Create a post <i class="fa fa-edit    "></i>
+            </h4>
+        <form action='/showposts/'  class="form-group px-2 my-5" method="POST" id='create-post' enctype="multipart/form-data" name ='postitem'>
+            
+            {% csrf_token %}
+            {{form.post_title}}
+            
+            {{form.post}}
+        
+        <div class='custom-file text-left'>
+            {{form.post_img}}
+            <label class="custom-file-label " for="id_post_img" aria-describedby="inputGroupFileAddon">Choose file</label>
+         </div>
+          <!-- <small id="fileHelpId" class="form-text text-muted">Enter file path</small> -->
+       
+        <input type="submit" value="Publish" class="btn btn-dark my-3">
+        </form>
+    </div>
+{% endif %}
+<h1 class='text-center bg-dark text-light'> Blog Posts</h1>
+   
+        
+
+    
+    {% include 'showPosts.html'%}
+    {% if request.user.is_authenticated %}
+    {% include 'editpost.html' %}
+
+    {% endif %}
+
+    
+    
+    
+
+    
+    
+
+
+
+{% endblock content %}
+
+{% block script %}
+$("#id_post_img").change(function(e){
+    var filename = e.target.files[0].name
+    $(".custom-file label").text(filename)
+    
+})
+
+    
+{% endblock script %}
